@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+	
+<!--  설정  -->
+
+<configuration>
+	<!-- Database 설정 -->
+	<environments default="developerment">
+		<environment id="developerment">
+			<transactionManager type="JDBC"/>			
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+				<property name="url" value=""/>
+				<property name="username" value="root"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+	
+	</mappers>
+</configuration>

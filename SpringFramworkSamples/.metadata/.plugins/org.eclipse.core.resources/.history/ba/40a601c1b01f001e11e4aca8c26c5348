@@ -1,0 +1,45 @@
+package ssg.com.a.controller;
+
+import java.util.Date;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+@Controller		// <- annotation
+public class HelloController {
+
+	@RequestMapping("/hello")
+	public String hello() {
+		System.out.println("HelloController hello() " + new Date());
+		
+		return "hello";		// hello.jsp 로 가라!
+	}
+	
+	@RequestMapping(value="home.do", method=RequestMethod.GET)
+	public String home(Model model) {
+		System.out.println("HelloController home() " + new Date());
+		String name="홍길동";
+		//짐싸!
+		model.addAttribute("name",name);
+		
+		//잘가
+		return "home";  // 아무것도 안 적으면 GET
+		
+	}
+	
+	@RequestMapping(value="world.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public String world(String name, int age) {
+		System.out.println("HelloController world() " + new Date());
+		
+		System.out.println("name : " + name + "age : " +age);
+		return "home";
+	}
+	
+// 	@RequestMapping(value="object.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public String objectMethod() {
+			
+	}
+
+}

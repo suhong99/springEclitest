@@ -1,0 +1,23 @@
+package main;
+
+import java.io.InputStream;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+public class MainClass {
+
+	public static void main(String[] args) throws Exception{
+		//config(설정)파일을 load
+		InputStream is = Resources.getResourceAsStream("mybatis/config.xml");
+		
+		// SqlSessionFactory 객체 생성 임시저장공간
+		SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(is);
+		
+		// 
+		SqlSession session = factory.openSession();
+		
+		}
+}

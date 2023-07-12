@@ -1,0 +1,13 @@
+package ssg.com.a.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller  //<- annotation
+public class HelloController {
+	
+	@RequestMapping("/hello")
+	public void hello() {
+		
+	}
+}

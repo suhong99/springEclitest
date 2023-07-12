@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Query -->
+
+<mapper namespace="mybatis.mapper">
+<!--
+	<select id="외부에서 접근할 문자열" 
+		parameterType="Object" < -- 들어오는 값
+		resultType= "Object"   < -- 나오는 값'
+		
+		쿼리문
+		select id, name, email
+		from user
+		where id-#{변수명(값)} <- #{문자열} ${숫자}
+		</select>
+		
+		<insert id="외부에서 접근할 문자열"
+			parameterType="Object">
+			</insert>
+			<delete
+			
+			<update 
+			
+			
+ 		   //	count= psmt.executeUpdate(); // 몇개가 업데이트 됐니?
+		
+-->
+
+</mapper>	
