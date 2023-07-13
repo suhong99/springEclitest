@@ -9,4 +9,10 @@
 	from member
 </select>
 
+<select id="find" parameterType="String" resultType="ssg.com.a.dto.MemberDto">
+	select *
+	from member
+	where id=#{id}
+</select>
+
 </mapper>
