@@ -6,12 +6,16 @@
 	</section>
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="springSamples"/>
+			<item value="springSample04"/>
 			<item value="springSample4"/>
 			<item value="springSample2"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="springSamples"/>
+			<item value="springSample04"/>
 			<item value="springSample4"/>
 			<item value="springSample2"/>
 		</list>

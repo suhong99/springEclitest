@@ -10,6 +10,7 @@ import ssg.com.a.dto.MemberDto;
 @Repository
 public class MemberDaoImpl implements MemberDao{
 	
+	// 에노테이션
 	@Autowired
 	SqlSession  session;  
 	// SqlSessionTemplate session; // mybatis
