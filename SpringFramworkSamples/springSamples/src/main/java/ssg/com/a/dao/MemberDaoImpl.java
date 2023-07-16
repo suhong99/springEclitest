@@ -8,27 +8,25 @@ import org.springframework.stereotype.Repository;
 import ssg.com.a.dto.MemberDto;
 
 @Repository
-public class MemberDaoImpl implements MemberDao{
-	
-	// 에노테이션
+public class MemberDaoImpl implements MemberDao {
+
 	@Autowired
-	SqlSession  session;  
-	// SqlSessionTemplate session; // mybatis
+	SqlSession session;
+//	SqlSessionTemplate session;
 	
 	String ns = "Member.";
-	
+
 	@Override
-	public int idcheck(String id) {
-		int count = session.selectOne(ns+"idcheck",id);
+	public int idcheck(String id) {		
+		int count = session.selectOne(ns + "idcheck", id);		
 		return count;
 	}
 
 	@Override
 	public int addmember(MemberDto dto) {
-		return session.insert(ns+"addmember",dto);
-		
+		return session.insert(ns + "addmember", dto);		
 	}
-	
+
 	@Override
 	public MemberDto login(MemberDto dto) {		
 		return session.selectOne(ns + "login", dto);
@@ -36,4 +34,8 @@ public class MemberDaoImpl implements MemberDao{
 	
 	
 }
+
+
+
+
 

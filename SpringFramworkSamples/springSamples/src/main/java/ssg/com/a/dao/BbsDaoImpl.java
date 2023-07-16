@@ -11,7 +11,7 @@ import ssg.com.a.dto.BbsParam;
 
 @Repository
 public class BbsDaoImpl implements BbsDao{
-	
+
 	@Autowired
 	SqlSessionTemplate session;
 	
@@ -19,12 +19,22 @@ public class BbsDaoImpl implements BbsDao{
 
 	@Override
 	public List<BbsDto> bbslist(BbsParam param) {
-		return session.selectList(ns+"bbslist",param);
+		return session.selectList(ns + "bbslist", param);		
 	}
 
 	@Override
 	public int getAllBbs(BbsParam param) {
-		return session.selectOne(ns+"getallbbs",param);	
+		return session.selectOne(ns + "getallbbs", param);
+	}
+
+	@Override
+	public int bbswrite(BbsDto dto) {		
+		return session.insert(ns + "bbswrite", dto);
+	}
+
+	@Override
+	public BbsDto bbsdetail(int seq) {		
+		return session.selectOne(ns + "bbsdetail", seq);
 	}
 	
 	

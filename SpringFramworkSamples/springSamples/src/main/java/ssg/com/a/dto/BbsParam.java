@@ -4,22 +4,19 @@ import java.io.Serializable;
 
 public class BbsParam implements Serializable{
 	
-	private String choice; // 카테고리(제목/내용/작성자)
-	private String search; // 검색어
+	private String choice;	// 카테고리(제목/내용/작성자)
+	private String search;	// 검색어
 	private int pageNumber;
-	
+
 	public BbsParam() {
-		
 	}
-	
-	
+
 	public BbsParam(String choice, String search, int pageNumber) {
 		super();
 		this.choice = choice;
 		this.search = search;
 		this.pageNumber = pageNumber;
 	}
-
 
 	public String getChoice() {
 		return choice;
@@ -44,7 +41,10 @@ public class BbsParam implements Serializable{
 	public void setPageNumber(int pageNumber) {
 		this.pageNumber = pageNumber;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "BbsParam [choice=" + choice + ", search=" + search + ", pageNumber=" + pageNumber + "]";
+	}	
 	
 }

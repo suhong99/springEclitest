@@ -3,16 +3,16 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Member">
+
 <select id="idcheck" parameterType="java.lang.String" resultType="java.lang.Integer">
-	select 	count(*)
+	select count(*)
 	from member
 	where id=#{id}
 </select>
 
 <insert id="addmember" parameterType="ssg.com.a.dto.MemberDto">
-	insert into member(id,pwd, name, email,auth)
-	values(#{id},#{pwd},#{name},#{email},3)
-	
+	insert into member(id, pwd, name, email, auth)
+	values(#{id}, #{pwd}, #{name}, #{email}, 3)
 </insert>
 
 <select id="login" parameterType="ssg.com.a.dto.MemberDto" 
@@ -21,4 +21,11 @@
 	from member
 	where id=#{id} and pwd=#{pwd}
 </select>
+
+
 </mapper>
+
+
+
+
+

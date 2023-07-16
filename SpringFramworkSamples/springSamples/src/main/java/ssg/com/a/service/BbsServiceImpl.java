@@ -11,17 +11,29 @@ import ssg.com.a.dto.BbsParam;
 
 @Service
 public class BbsServiceImpl implements BbsService{
-	
+
 	@Autowired
 	BbsDao dao;
 
 	@Override
-	public List<BbsDto> bbslist(BbsParam param) {
+	public List<BbsDto> bbslist(BbsParam param) {		
 		return dao.bbslist(param);
 	}
 
 	@Override
-	public int getAllBbs(BbsParam param) {
+	public int getAllBbs(BbsParam param) {		
 		return dao.getAllBbs(param);
 	}
+
+	@Override
+	public boolean bbswrite(BbsDto dto) {		
+		return dao.bbswrite(dto)>0?true:false;
+	}
+
+	@Override
+	public BbsDto bbsdetail(int seq) {		
+		return dao.bbsdetail(seq);
+	}
+		
+	
 }
