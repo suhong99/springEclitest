@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ssg.com.a.dao.BbsDao;
+import ssg.com.a.dto.BbsComment;
 import ssg.com.a.dto.BbsDto;
 import ssg.com.a.dto.BbsParam;
 
@@ -34,6 +35,16 @@ public class BbsServiceImpl implements BbsService{
 	public BbsDto bbsdetail(int seq) {		
 		return dao.bbsdetail(seq);
 	}
-		
+
+	@Override
+	public boolean commentWrite(BbsComment comment) {		
+		return dao.commentWrite(comment)>0?true:false;
+	}
+
+	@Override
+	public List<BbsComment> commentList(int seq) {		
+		return dao.commentList(seq);
+	}
+			
 	
 }

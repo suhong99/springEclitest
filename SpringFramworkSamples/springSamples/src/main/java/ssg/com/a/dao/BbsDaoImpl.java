@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import ssg.com.a.dto.BbsComment;
 import ssg.com.a.dto.BbsDto;
 import ssg.com.a.dto.BbsParam;
 
@@ -35,6 +36,16 @@ public class BbsDaoImpl implements BbsDao{
 	@Override
 	public BbsDto bbsdetail(int seq) {		
 		return session.selectOne(ns + "bbsdetail", seq);
+	}
+
+	@Override
+	public int commentWrite(BbsComment comment) {		
+		return session.insert(ns + "commentWrite", comment);
+	}
+
+	@Override
+	public List<BbsComment> commentList(int seq) {		
+		return session.selectList(ns + "commentList", seq);
 	}
 	
 	

@@ -14,6 +14,11 @@
 	int pageNumber = param.getPageNumber();
 	String choice = param.getChoice();
 	String search = param.getSearch();
+	/*
+	int pageNumber = (Integer)request.getAttribute("pageNumber");
+	String choice = (String)request.getAttribute("choice");
+	String search = (String)request.getAttribute("search");
+	*/
 %>    
     
 <!DOCTYPE html>
@@ -29,8 +34,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script type="text/javascript" src="jquery/jquery.twbsPagination.min.js"></script>
 
+<script type="text/javascript" src="jquery/jquery.twbsPagination.min.js"></script>
 
 <style type="text/css">
 .center{
@@ -53,7 +58,7 @@ tr {
 <h1>게시판</h1>
 <br>
 
-<a href="calendar?param=calendarList">일정관리</a>
+<a href="pdslist.do">자료실</a>
 
 <%
 MemberDto login = (MemberDto)session.getAttribute("login");
@@ -95,7 +100,7 @@ if(list == null || list.size() == 0){
 			if(bbs.getDel() == 0){
 				%>				
 				<td style="text-align: left;">
-					<a href="bbs?param=bbsdetail&seq=<%=bbs.getSeq() %>">
+					<a href="bbsdetail.do?seq=<%=bbs.getSeq() %>">
 						<%=BbsUtil.arrow(bbs.getDepth()) %>
 						<%=BbsUtil.titleDot(bbs.getTitle()) %>
 					</a>
@@ -142,17 +147,18 @@ if(list == null || list.size() == 0){
 		}		
 	}
 --%>
+<br>
 
 <div class="container">
-	<nav aria-label="Page navigation">
-		<ul class="pagination" id="pagination"></ul>
-	</nav>
+    <nav aria-label="Page navigation">
+        <ul class="pagination" id="pagination" style="justify-content:center"></ul>
+    </nav>
 </div>
 
-<br><br>
+<br>
 <div class="form-row align-items-center d-flex justify-content-center align-items-center container">
 <select id="choice" class="form-control" style="width:auto;">
-	<option value="">검색</option>
+	<option value="start">검색</option>
 	<option value="title">제목</option>
 	<option value="content">내용</option>
 	<option value="writer">작성자</option>
@@ -166,13 +172,17 @@ if(list == null || list.size() == 0){
 </div>
 
 <br>
-<a href="bbs?param=bbswrite">글쓰기</a>
+<a href="bbswrite.do">글쓰기</a>
 
 </div>
 
 <script type="text/javascript">
+
+
+	
 // Java -> JavaScript
 let search = "<%=search %>"; 	// 문자열일 경우
+	
 if(search != ""){
 	let obj = document.getElementById("choice");
 	obj.value = "<%=choice %>";
@@ -180,11 +190,10 @@ if(search != ""){
 } 
 
 function searchBtn() {
-	 let choice = document.getElementById("choice").value;
-	  let search = document.getElementById("search").value;
-/* 	let choice = document.getElementById("choice").value;
+	let choice = document.getElementById("choice").value;
+//	let choice = $("#choice").val();
 	let search = document.getElementById("search").value;
- */	/*
+	/*
 	if(choice.trim() == ""){
 		alert("카테고리를 선택해 주십시오");
 		return;
@@ -194,7 +203,7 @@ function searchBtn() {
 		return;
 	}
 	*/
-	  location.href = "bbslist.do?choice=" + choice + "&search=" + search;
+	location.href = "bbslist.do?choice=" + choice + "&search=" + search;
 }
 /*
 function goPage( pageNum ) {
@@ -207,13 +216,23 @@ function goPage( pageNum ) {
 
 $("#pagination").twbsPagination({
 	startPage:<%=pageNumber+1 %>,
-	totalPages:pageBbs,
+	totalPages:<%=pageBbs %>,
 	visiblePages:10,
-	first:'<span srid-hidden="true">«</span>', // 처음 페이지로 이동
+	first:'<span srid-hidden="true">«</span>',		// 처음 페이지로 이동
 	prev:"이전",
 	next:"다음",
-	last:'<span srid-hidden="true">»</span>'
+	last:'<span srid-hidden="true">»</span>',
+	initiateStartPageClick:false,					// 자동 실행이 되지 않도록 설정
+	onPageClick:function(event, page){
+		// alert(page);
+		let choice = $("#choice").val();
+		let search = $("#search").val();
+
+		location.href = "bbslist.do?choice=" + choice + "&search=" + search + "&pageNumber=" + (page - 1);
+	}
 });
+
+
 </script>
 
 

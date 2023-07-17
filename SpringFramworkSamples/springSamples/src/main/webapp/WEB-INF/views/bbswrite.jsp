@@ -86,7 +86,7 @@ $(document).ready(function(){
 			return;
 		}
 		
-		$("#frm").attr("action", "bbs?param=bbswriteAf").submit();		
+		$("#frm").attr("action", "bbswriteAf.do").submit();		
 	});
 	
 });

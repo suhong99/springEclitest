@@ -75,7 +75,7 @@ $(document).ready(function(){
 		
 		// id가 사용할 수있는지 없는지 -ajax
 		$.ajax({
-			url:"./idcheck.do",
+			url:"idcheck.do",
 			type:"post",
 			data:{ "id":$("#id").val() },
 			success:function( answer ){
